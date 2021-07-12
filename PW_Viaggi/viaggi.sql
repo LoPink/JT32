@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS viaggi(
 id INT AUTO_INCREMENT,
 destinazione VARCHAR (60) NOT NULL,
 durata INT,
-prezzoPersona DOUBLE(7, 2),
+prezzo_persona DOUBLE(7, 2),
 PRIMARY KEY (id)
 );
 
@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS prenotazioni(
 id INT AUTO_INCREMENT,
 utente_id INT, 
 viaggio_id INT,
-prezzoTotale DOUBLE(7, 2),
+prezzo_totale DOUBLE(7, 2),
 PRIMARY KEY (id)
 );
 
@@ -19,7 +19,7 @@ id INT AUTO_INCREMENT,
 nome VARCHAR (60) NOT NULL, 
 cognome VARCHAR (60) NOT NULL, 
 email VARCHAR (60) NOT NULL UNIQUE,
-numeroCarta DECIMAL (16) NOT NULL,
+numero_carta DECIMAL (16) NOT NULL,
 PRIMARY KEY (id)
 );
 
