@@ -37,24 +37,28 @@ var listaLocal=[];
 
 fetch(URL).then(j => j.json()).then(persone => 
 {
-    // console.log(persone)
-    // console.log(persone.data)
 
-    // listaUser = persone.data;
     //let avatar = [];
+
+    //listaUser = persone.data;
     //localStorage.setItem('lista', JSON.stringify(listaUser))
+    
     listaLocal = JSON.parse(localStorage.getItem('lista'))
     
+    // LISTA
     for(user of listaLocal){
         //console.log(typeof(listaLocal))    
-        $('ul').append('<li>'+user.first_name+'</li>')
-        
+        $('ul').append('<li>'+user.first_name+'<button id="'+ user.id +'">Elimina</button></li>')
         //avatar.push(user.avatar);
-    
+        //let elimina = document.getElementById('elimina');
+
+
     }
     
+    // CARD
     $('li').on('click', function(){
         
+        //console.log(listaLocal[$(this).index()].id)
         $('#cartaInfo').html('');
         $('#cartaInfo').append('<img src='+ listaLocal[$(this).index()].avatar +'>');
         $('#cartaInfo').append("<div class='card-body'></div>");
@@ -63,11 +67,37 @@ fetch(URL).then(j => j.json()).then(persone =>
 
     })
     
+    //ELIMINA
+    $('button').on('click', function(){
+           
+        var listaTmp = [];
+
+        var idCorrente = this.getAttribute('id')
+        //localStorage.removeItem(listaLocal[idCorrente-1])
+        console.log("idCorrente = "+idCorrente)
+        
+        for(var i=0; i<listaLocal.length; i++){
+            if(listaLocal[i].id!=idCorrente){
+                //idCorrente=i;
+                listaTmp.push(listaLocal[i]);
+            }
+        }
+
+        listaLocal.splice(idCorrente-1, 1)
+        console.log('listaLocal[idCorrente-1] = '+listaLocal[idCorrente-1])
+
+        console.log(listaLocal.indexOf())
+
+        localStorage.setItem('lista', JSON.stringify(listaTmp))
+    
+    });
+    
 })
 
 
 
 
+// CARICA
 $('#carica').on('click', function(){
 
     var nome = document.getElementById('nome').value
@@ -108,8 +138,6 @@ $('#carica').on('click', function(){
     })
     .then((response) => response.json())
     .then((json) =>  console.log(json));
-    
-    
 
 })
 
