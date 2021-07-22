@@ -1,0 +1,11 @@
+#riga {
+    padding-top: 2rem;
+}
+
+#lista {
+    padding: 3rem 1rem;
+}
+
+li {
+    cursor: pointer;
+}

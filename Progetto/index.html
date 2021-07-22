@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+<title>Title</title>
+</head>
+<body>
+
+<!-- RUBRICA DINAMICA -->
+
+UTILIZZANDO JQUERY E JQUEWRYUI(opzionale)
+
+1.Utilizzare API esterna https://reqres.in per scaricare i dati degli utenti
+
+2.Creare una lista di contatti utilizzando API. Visibile solo nome, al click sul nome compare immagine, mail o altre info in card a parte.
+
+3.Form per inserire nuovi utenti utilizzando POST, salvare tutti gli utenti nella localstorage
+
+4.Implementare elimina e modifica del singolo contatto
+
+5.Utilizzare Bootstrap
+
+<div class="container">
+    <div class="row" id="riga">
+        <div class="col-sm-2" id="lista">
+            <ul></ul>
+        </div>
+        <div class="col-sm-4" id="info">
+            <div class="card" id="cartaInfo">
+
+            </div>
+        </div>
+        <div class="col-sm-6" id="form">
+            <div id="form">
+                
+                <label for="nome">Nome</label>
+                <input type="text" placeholder="nome" id="nome">
+                <label for="cognome">Cognome</label>
+                <input type="text" placeholder="cognome" id="cognome">
+                <label for="email">Email</label>
+                <input type="email" placeholder="email" id="email">
+                <button id="carica">Carica</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- SCRIPT -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+<script src="js/script.js"></script>
+
+</body>
+</html>
