@@ -48,54 +48,65 @@ fetch(URL).then(j => j.json()).then(persone =>
     // LISTA
     for(user of listaLocal){
         //console.log(typeof(listaLocal))    
-        $('ul').append('<li>'+user.first_name+'<button id="'+ user.id +'">Elimina</button></li>')
+        $('ul').append('<li>'+user.first_name+'<button class="btn-elimina" id="'+ user.id +'">Elimina</button></li>')
         //avatar.push(user.avatar);
         //let elimina = document.getElementById('elimina');
-
 
     }
     
     // CARD
     $('li').on('click', function(){
         
-        //console.log(listaLocal[$(this).index()].id)
+        console.log(listaLocal[$(this).index()].id)
         $('#cartaInfo').html('');
         $('#cartaInfo').append('<img src='+ listaLocal[$(this).index()].avatar +'>');
         $('#cartaInfo').append("<div class='card-body'></div>");
         $('.card-body').append('<h5>'+ listaLocal[$(this).index()].first_name + ' ' + listaLocal[$(this).index()].last_name +'</h5>');
-        $('.card-body').append('<p>' + listaLocal[$(this).index()].email + '</p>');  
+        $('.card-body').append('<p>' + listaLocal[$(this).index()].email + '</p>');
+        $('.card-body').append('<button class="btn-modifica" id="'+ listaLocal[$(this).index()].id +'">Modifica</button>')  
 
-    })
+        //MODIFICA
+        $('.btn-modifica').on('click', function(){
+        
+            var idCorrenteM = this.getAttribute('id')
+
+            console.log(idCorrenteM)
+                
+        });
+
+
+    });
     
-    //ELIMINA
-    $('button').on('click', function(){
+
+
+//ELIMINA
+    $('.btn-elimina').on('click', function(){
            
-        var listaTmp = [];
+        //var listaTmp = [];
 
         var idCorrente = this.getAttribute('id')
-        //localStorage.removeItem(listaLocal[idCorrente-1])
-        console.log("idCorrente = "+idCorrente)
+
+        listaLocal = listaLocal.filter( p => p.id != idCorrente );
+
+        // for(var i=0; i<listaLocal.length; i++){
+        //     if(listaLocal[i].id!=idCorrente){
+        //         listaTmp.push(listaLocal[i]);
+        //     }
+        // }
+        //listaLocal.splice(idCorrente-1, 1)
         
-        for(var i=0; i<listaLocal.length; i++){
-            if(listaLocal[i].id!=idCorrente){
-                //idCorrente=i;
-                listaTmp.push(listaLocal[i]);
-            }
-        }
+        //console.log("idCorrente = "+ idCorrente)
+        //console.log('listaLocal[idCorrente-1] = '+listaLocal[idCorrente-1])
+        //console.log(listaLocal.indexOf())
 
-        listaLocal.splice(idCorrente-1, 1)
-        console.log('listaLocal[idCorrente-1] = '+listaLocal[idCorrente-1])
-
-        console.log(listaLocal.indexOf())
-
-        localStorage.setItem('lista', JSON.stringify(listaTmp))
+        localStorage.setItem('lista', JSON.stringify(listaLocal))
     
     });
     
-})
+});
 
-
-
+    
+    
 
 // CARICA
 $('#carica').on('click', function(){
@@ -139,7 +150,7 @@ $('#carica').on('click', function(){
     .then((response) => response.json())
     .then((json) =>  console.log(json));
 
-})
+});
 
 
 
