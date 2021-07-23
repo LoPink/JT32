@@ -57,7 +57,7 @@ fetch(URL).then(j => j.json()).then(persone =>
     // CARD
     $('li').on('click', function(){
         
-        console.log(listaLocal[$(this).index()].id)
+        //console.log(listaLocal[$(this).index()].id)
         $('#cartaInfo').html('');
         $('#cartaInfo').append('<img src='+ listaLocal[$(this).index()].avatar +'>');
         $('#cartaInfo').append("<div class='card-body'></div>");
@@ -68,10 +68,26 @@ fetch(URL).then(j => j.json()).then(persone =>
         //MODIFICA
         $('.btn-modifica').on('click', function(){
         
-            var idCorrenteM = this.getAttribute('id')
+            var idCorrenteM = Number(this.getAttribute('id'))
+            var nomeCorrenteM = listaLocal[idCorrenteM-1].first_name
+            var cognomeCorrenteM = listaLocal[idCorrenteM-1].last_name
+            var emailCorrenteM = listaLocal[idCorrenteM-1].email
+            // console.log(idCorrenteM)
+            // console.log(nomeCorrenteM)
+            // console.log(cognomeCorrenteM)
+            // console.log(emailCorrenteM)
+            var nome = document.getElementById('nome')
+            var cognome = document.getElementById('cognome')
+            var email = document.getElementById('email')
 
-            console.log(idCorrenteM)
-                
+            nome.setAttribute('value', nomeCorrenteM)
+            cognome.setAttribute('value', cognomeCorrenteM)
+            email.setAttribute('value', emailCorrenteM)
+            
+            listaLocal = listaLocal.filter( p => p.id != idCorrenteM );
+            
+            localStorage.setItem('lista', JSON.stringify(listaLocal))
+
         });
 
 
