@@ -6,6 +6,29 @@
     padding: 3rem 1rem;
 }
 
+#consegna {
+    padding-top: 2rem;
+    border-bottom: 1px solid rgb(161, 252, 225);
+}
+
 li {
     cursor: pointer;
+}
+
+button {
+    margin-top: 1rem;
+    background-color: rgb(161, 252, 225);
+    border-radius: 25px;
+    text-align: center;
+    padding: 0.5rem 0.7rem;
+}
+
+.btn-elimina {
+    margin-left: 0.4rem;
+    background-color: rgb(246, 140, 140);
+    padding: 0.2rem 0.4rem;
+}
+
+.btn-modifica {
+    background-color: rgb(243, 227, 137);
 }
